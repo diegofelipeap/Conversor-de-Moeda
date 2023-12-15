@@ -108,7 +108,7 @@
      color: #555555;
  }
 
- .currency-img {
+ .currency-img, #currency-image {
     width: 53px;
     height: 53px;
  }

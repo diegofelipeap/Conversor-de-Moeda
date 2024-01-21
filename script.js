@@ -3,18 +3,21 @@ const convertButton = document.querySelector(".convert-button")
 const currencySelect = document.querySelector(".currency-select")
 const currencySelectToConvert = document.querySelector(".currency-select-to-convert")
 
-function convertValues() {
+async function convertValues() {
     const inputCurrencyValue = document.querySelector(".input-currency").value
     // o .value é para pegar somente o valor digitado no input.
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert") //valor a ser convertido
     const currencyValueConverted = document.querySelector(".currency-value") //resultado da conversão.
 
-    const dolarToday = 4.94
-    const euroToday = 5.39
-    const libraToday = 6.27
-    const pesoArgentinoToday = 0.0062
-    const bitcoinToday = 207.986
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL,ARS-BRL").then(response => response.json())
+
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
+    const libraToday = data.GBPBRL.high
+    const pesoArgentinoToday = data.ARSBRL.high
+    const bitcoinToday = data.BTCBRL.high
     const realToday = 1.00
+
 
     /*Estrutura condicional: Agora, para cada valor de moeda, terá uma ação nesta função. */
 
